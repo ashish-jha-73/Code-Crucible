@@ -1,0 +1,1 @@
+{"name":"Local: Palindrome_Special","url":"/home/ikshvaku/Projects/CodeCrucible/Palindrome_Special.cpp","tests":[{"id":1753495393056,"input":"3\n2\n23\n212","output":"22\n212\n333"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/ikshvaku/Projects/CodeCrucible/Palindrome_Special.cpp","group":"local","local":true}

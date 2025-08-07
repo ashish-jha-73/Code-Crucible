@@ -1,0 +1,1 @@
+{"name":"Local: strip","url":"/home/ikshvaku/Projects/CodeCrucible/strip.cpp","tests":[{"id":1753607503039,"input":"777777\n2\n1000000000,3999999999,VISA\n4000000000,5999999999,MASTERCARD","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/ikshvaku/Projects/CodeCrucible/strip.cpp","group":"local","local":true}
