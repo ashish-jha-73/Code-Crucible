@@ -34,7 +34,7 @@ How to Use
 
 1.  **Clone the Repository:**
     
-        git clone https://github.com/ashish-jha-2004/CP_Problem_Solved
+        git clone https://github.com/ashish-jha-2004/Code-Crucible
     
 2.  **Navigate to the Problem:**
     
