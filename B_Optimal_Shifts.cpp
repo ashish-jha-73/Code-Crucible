@@ -108,9 +108,30 @@ string decToBin(ll a) { return bitset<64>(a).to_string(); }
 ll factorial(ll n){if (n==0){ return 1;} ll ans=1;for (ll i=1;i<=n;i++) { ans=mod_mul(ans,i); } return ans; }
 ll nCr(ll n, ll r) { if (n<r){ return 0;} ll ans=factorial(n); ans=mod_mul(ans,inv(factorial(r))); ans=mod_mul(ans,inv(factorial(n-r))); return ans; }
 
+ll func(string &s) {
+    ll maxi = 0, sum = 0;
+    for (int i{0}; i<s.size(); i++) {
+        if (s[i] == '1') {
+            maxi = max(sum, maxi);
+            sum = 0;
+        } else {
+            sum++;
+        }
+    }
+    return max(maxi, sum);
+}
+
 void solve(){
     // code here
-    
+    d_n(n);
+    d_s(s);
+    while (s.front() == '0') {
+        s.erase(s.begin());
+        s.push_back('0');
+    }
+    debug(s);
+    ll ans = func(s);
+    cout << ans << en;
 }
 
 int main(){

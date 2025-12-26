@@ -108,15 +108,52 @@ string decToBin(ll a) { return bitset<64>(a).to_string(); }
 ll factorial(ll n){if (n==0){ return 1;} ll ans=1;for (ll i=1;i<=n;i++) { ans=mod_mul(ans,i); } return ans; }
 ll nCr(ll n, ll r) { if (n<r){ return 0;} ll ans=factorial(n); ans=mod_mul(ans,inv(factorial(r))); ans=mod_mul(ans,inv(factorial(n-r))); return ans; }
 
+map<ll, vl> G;
+
+vl dijkstra(ll &n) {
+    vl dist(n, INT_MAX);
+    dist[0] = 0;
+    queue<pair<ll, ll>> q; q.push({0, 0});
+    while (!q.empty()) {
+        auto f = q.front();
+        q.pop();
+        ll val = f.F, d = f.S;
+        if (d > dist[val]) continue;
+        dist[val] = min(d, dist[val]);
+        for (auto &nbr: G[val]) {
+            q.push({nbr, d + 1});
+        }
+    } 
+    return dist;
+}
+
 void solve(){
     // code here
-    
+    d_n(n, m, k);
+    d_v(a, n);
+    vector<pair<ll, ll>> graph;
+    while (m--) {
+        d_n(x, y);
+        G[--x].push_back(--y);
+        G[y].push_back(x);
+    }
+    if (n == 0) {cout << 0 << en; return;}
+    debug(G);
+    vl dist = dijkstra(n);
+    debug(dist);
+    map<ll, set<ll, greater<ll>>> mp;
+    fl(i, n) {
+        mp[a[i]].insert(dist[i]);
+    }
+    for (auto &k: mp) {
+        cout << *(k.second.begin()) << " ";
+    }
 }
 
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    d_n(t);
+    short t = 1;
     while (t--){
         solve();
     }

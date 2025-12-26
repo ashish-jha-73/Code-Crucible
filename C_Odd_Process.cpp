@@ -108,9 +108,52 @@ string decToBin(ll a) { return bitset<64>(a).to_string(); }
 ll factorial(ll n){if (n==0){ return 1;} ll ans=1;for (ll i=1;i<=n;i++) { ans=mod_mul(ans,i); } return ans; }
 ll nCr(ll n, ll r) { if (n<r){ return 0;} ll ans=factorial(n); ans=mod_mul(ans,inv(factorial(r))); ans=mod_mul(ans,inv(factorial(n-r))); return ans; }
 
+
 void solve(){
     // code here
-    
+    d_n(n);
+    d_v(v, n);
+    vl odd, even;
+    fl(i, n) {
+        (v[i] & 1) ? odd.PB(v[i]) : even.PB(v[i]);
+    } 
+    sort(all(odd)), sort(all(even));
+    if (odd.empty()) {
+        fl(i, n) cout << "0 ";
+        cout << en;
+        return;
+    } 
+    if (even.empty()) {
+        fl (i, n) {
+            if (i & 1) cout << "0 ";
+            else cout << odd.back() << " ";
+        }
+        cout << en;
+        return;
+    }
+    vector<ll> ans(n+1);
+ 
+    ll score = odd.back();
+    ans[1] = score;
+ 
+    for(int k = 2; k <= n; k++) {
+        if(even.size() == 0) {
+            ans[k] = ans[k-2];
+        }
+        else{
+            ans[k] = ans[k-1] + even.back();
+            even.pop_back();
+        }
+    }
+ 
+    if(accumulate(all(v), 0LL) & 1 ^ 1) {
+        ans[n] = 0;
+    }
+ 
+    for(int i = 1; i <= n; i++) {
+        cout << ans[i] << ' ';
+    }
+    cout << en;
 }
 
 int main(){

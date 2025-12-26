@@ -110,7 +110,23 @@ ll nCr(ll n, ll r) { if (n<r){ return 0;} ll ans=factorial(n); ans=mod_mul(ans,i
 
 void solve(){
     // code here
-    
+    multiset<ll> ms;
+    d_n(n);
+    d_v(v, n);
+    ll ans = 0;
+    fl (i, n) {
+        if (ms.empty()) {
+            ms.insert(v[i]);
+        } else {
+            auto temp = ms.upper_bound(v[i]);
+            if (temp != ms.end()) {
+                ans++;
+            } else {
+                ms.insert(v[i]);
+            }
+        }
+    }
+    cout << ans << endl;
 }
 
 int main(){
